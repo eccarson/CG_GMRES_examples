@@ -11,10 +11,14 @@ ln = 5;
 A = mp(strakosmatrix(n, l1, ln, 1),100);
 b = ones(n,1)./sqrt(n);
 
-% Compute kappa-based upper bound on convergence rate
+% Compute kappa-based upper bound on convergence rate and minmax bound
 kappa = ln/l1;
+lam = double(eig(full(A)));
+out(1)=1; kappa_bd(1)=2;
 factor = (sqrt(kappa)-1)/(sqrt(kappa)+1);
-for k = 0:n
+for k = 1:n-1
+    [blk,Avec,C,bb,X0,y0,Z0,objval,p] = cheby0(lam,k,1);
+    out(k+1)=objval;
     kappa_bd(k+1) = 2*factor^k;
 end
 
@@ -27,11 +31,12 @@ results = pcge(A, b, eye(n), tol, options);
 Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
-figure(1), clf
-figure(1), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
-figure(1), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+f1 = figure;
+figure(f1), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f1), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
+figure(f1), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
 
-axis([0 n 1e-12 10])
+axis([0 40 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)
 print -depsc worst1.eps
@@ -44,10 +49,14 @@ ln = 100;
 A = mp(strakosmatrix(n, l1, ln, 1),100);
 b = ones(n,1)./sqrt(n);
 
-% Compute kappa-based upper bound on convergence rate
+% Compute kappa-based upper bound on convergence rate and minmax bound
 kappa = ln/l1;
+lam = double(eig(full(A)));
+out(1)=1; kappa_bd(1)=2;
 factor = (sqrt(kappa)-1)/(sqrt(kappa)+1);
-for k = 0:n
+for k = 1:n-1
+    [blk,Avec,C,bb,X0,y0,Z0,objval,p] = cheby0(lam,k,1);
+    out(k+1)=objval;
     kappa_bd(k+1) = 2*factor^k;
 end
 
@@ -60,10 +69,11 @@ results = pcge(A, b, eye(n), tol, options);
 Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
-figure(2), clf
-figure(2), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
-figure(2), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
-axis([0 n 1e-12 10])
+f2 = figure;
+figure(f2), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f2), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
+figure(f2), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+axis([0 40 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)
 print -depsc worst2.eps
@@ -77,10 +87,14 @@ ln = 5;
 A = mp(strakosmatrix(n, l1, ln, .1),100);
 b = ones(n,1)./sqrt(n);
 
-% Compute kappa-based upper bound on convergence rate
+% Compute kappa-based upper bound on convergence rate and minmax bound
 kappa = ln/l1;
+lam = double(eig(full(A)));
+out(1)=1; kappa_bd(1)=2;
 factor = (sqrt(kappa)-1)/(sqrt(kappa)+1);
-for k = 0:n
+for k = 1:n-1
+    [blk,Avec,C,bb,X0,y0,Z0,objval,p] = cheby0(lam,k,1);
+    out(k+1)=objval;
     kappa_bd(k+1) = 2*factor^k;
 end
 
@@ -93,11 +107,12 @@ results = pcge(A, b, eye(n), tol, options);
 Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
-figure(3), clf
-figure(3), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
-figure(3), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+f3 = figure;
+figure(f3), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f3), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
+figure(f3), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
 
-axis([0 n 1e-12 10])
+axis([0 40 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)
 print -depsc worst3.eps
@@ -111,13 +126,16 @@ A = mp(strakosmatrix(n, l1, ln, 1),100);
 b = [1;1;zeros(n-2,1)];
 b = b./norm(b);
 
-% Compute kappa-based upper bound on convergence rate
+% Compute kappa-based upper bound on convergence rate and minmax bound
 kappa = ln/l1;
+lam = double(eig(full(A)));
+out(1)=1; kappa_bd(1)=2;
 factor = (sqrt(kappa)-1)/(sqrt(kappa)+1);
-for k = 0:n
+for k = 1:n-1
+    [blk,Avec,C,bb,X0,y0,Z0,objval,p] = cheby0(lam,k,1);
+    out(k+1)=objval;
     kappa_bd(k+1) = 2*factor^k;
 end
-
 % Compute true solution and set options for cg run
 options.truesol = double(mp(A)\mp(b));
 tol = 1e-16; options.xlim = 2;
@@ -127,10 +145,11 @@ results = pcge(A, b, eye(n), tol, options);
 Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
-figure(4), clf
-figure(4), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
-figure(4), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
-axis([0 n 1e-12 10])
+f4 = figure;
+figure(f4), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f4), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
+figure(f4), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+axis([0 40 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)
 print -depsc worst4.eps
