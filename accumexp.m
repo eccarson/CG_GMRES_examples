@@ -16,12 +16,13 @@ lam3 = diag(strakosmatrix(n, l1, ln, 1));
 
 % Plot eigenvalue distributions
 figure()
-plot(real(lam1),imag(lam1)+0.5,'r.','MarkerSize',10), hold on
-plot(real(lam2),imag(lam2)-0.0,'b.','MarkerSize',10), hold on
+plot(real(lam1),imag(lam1)-0.0,'r.','MarkerSize',10), hold on
+plot(real(lam2),imag(lam2)+0.5,'b.','MarkerSize',10), hold on
 plot(real(lam3),imag(lam3)-0.5,'g.','MarkerSize',10), hold on
 axis([0,1e3,-1,1])
-yticks([-.5,0,.5])
-yticklabels({'\Lambda(A_3)','\Lambda(A_2)','\Lambda(A_1)'})
+%yticks([-.5,0,.5])
+%yticklabels({'\Lambda(A_3)','\Lambda(A_2)','\Lambda(A_1)'})
+set(gca,'YTickLabel',[]);
 set(gca, 'fontsize', 16);
 print -depsc eigdist.eps
 
@@ -39,13 +40,13 @@ optionslam2.xlim=80;
 optionslam3.xlim=60;
 
 % Run exact CG for the 3 systems
-optionslam1.truesol = double(mp(lam1)\mp(b));
+optionslam1.truesol = lam1\b;
 resultslam1 = pcge(lam1, b, eye(size(lam1,1)), tol, optionslam1);
 
-optionslam2.truesol = double(mp(lam2)\mp(b));
+optionslam2.truesol = lam2\b;
 resultslam2 = pcge(lam2, b, eye(size(lam2,1)), tol, optionslam2);
 
-optionslam3.truesol = double(mp(lam3)\mp(b));
+optionslam3.truesol = lam3\b;
 resultslam3 = pcge(lam3, b, eye(size(lam3,1)), tol, optionslam3);
 
 % Run double precision CG for the 3 systems
@@ -86,25 +87,25 @@ end
 
 % Plot convergence for exact CG
 figure()
-semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r--','LineWidth',2);
-hold on;
 semilogy(0:numel(resultslam2.error_A_norm)-1,resultslam2.error_A_norm,'b--','LineWidth',2);
+hold on;
+semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r--','LineWidth',2);
 semilogy(0:numel(resultslam3.error_A_norm)-1,resultslam3.error_A_norm,'g--','LineWidth',2);
 
-axis([0,80,1e-14,10])
-legend('acc. to the left', 'acc. to the right', 'equally spaced','Interpreter','latex');
+axis([0,60,1e-8,10])
+legend( 'acc. to the right', 'acc. to the left', 'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc exactcgdist.eps
 
 % Plot convergence for double precision CG
 figure()
-semilogy(0:numel(resultslam1d.error_A_norm)-1,resultslam1d.error_A_norm,'r--','LineWidth',2);
-hold on;
 semilogy(0:numel(resultslam2d.error_A_norm)-1,resultslam2d.error_A_norm,'b--','LineWidth',2);
+hold on;
+semilogy(0:numel(resultslam1d.error_A_norm)-1,resultslam1d.error_A_norm,'r--','LineWidth',2);
 semilogy(0:numel(resultslam3d.error_A_norm)-1,resultslam3d.error_A_norm,'g--','LineWidth',2);
 
-axis([0,80,1e-14,10])
-legend('acc. to the left', 'acc. to the right', 'equally spaced','Interpreter','latex');
+axis([0,60,1e-8,10])
+legend('acc. to the right', 'acc. to the left', 'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc dpcgdist.eps
 %saveas(gcf,'fpcg_new.pdf')

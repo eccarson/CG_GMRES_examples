@@ -54,7 +54,7 @@ resultslam3d30 = pcge(double(lam3), double(b), eye(size(lam3,1)), tol, optionsla
 
 % Plot spectral densities
 figure(1)
-subplot(3,1,1)
+subplot(3,1,2)
 
 stairs(diag(lam1),0:(1/(n-1)):1,  'r-', 'LineWidth',1);
 hold on;
@@ -64,7 +64,7 @@ legend('eigenvalues', 'Ritz values k = 10', 'Ritz values k = 20', 'Ritz values k
 title('acc. to the left','Interpreter','latex');
 set(gca, 'fontsize', 14);
 
-subplot(3,1,2)
+subplot(3,1,1)
 stairs( diag(lam2),0:(1/(n-1)):1, 'b-', 'LineWidth',1);
 hold on;
 stairs(resultslam2d10.ritzvals,0:(1/9):1,  "--", 'LineWidth',1, 'Color', [.8, .8, .8]);

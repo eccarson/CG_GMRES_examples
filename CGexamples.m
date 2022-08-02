@@ -3,14 +3,18 @@
 % "Mathematical behavior of CG for different eigenvalue distributions" and
 % "Computational behavior of CG for different eigenvalue distributions"
 accumexp(0.6)
+clusterlikefp(0.6)
 spectraldensity
 spectraldensityexact
 
+% "Mathematical behavior of CG for problems with clustered eigenvalues"
+clusterexp(0.6)
+
 % "Worst-case CG"
 worst
-wisehart
 
-% "Numerical behavior of CG on a Poisson model problem"
+% "Numerical behavior of CG on model problems"
+wisehart
 poissoncg
 
 % "Convergence of preconditioned CG"
@@ -19,8 +23,8 @@ pcgvscg
 % "Computational behavior of different CG implementations"
 fp2v3
 
-% "Convergence of CG for different right-hand sides"
-cgRHS
+% % "Convergence of CG for different right-hand sides"
+% cgRHS
 
 % "Residual versus error and stopping criteria"
 resvserror

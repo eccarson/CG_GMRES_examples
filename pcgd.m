@@ -100,4 +100,34 @@ while its < options.xlim
 end
 
 
-
+% function results = pcgd(A, b, P, tol, options)
+% 
+% % Size of matrix
+% N = size(A,1);
+% x0 = zeros(N,1);
+% 
+% % Apply preconditioner
+% A = P\A;
+% b = P\b;
+% 
+% 
+% % Run Lanczos with double reorthogonalization
+% [V,T,bet] = tridiag_lan_double(A,b-A*x0,options.xlim,0);
+% results.ritzvals = eig(full(T));
+% 
+% % Compute solutions and residuals
+% [Xk,Rk,rescomp] = comp_solutions_lanczos(T,V,bet);
+% results.r = Rk;
+% results.x = Xk(:,end);
+% results.r_comp_norm = rescomp;
+% 
+% % Compute true residuals
+% [Rkt,restrue] = comp_trueres(A,b,Xk);
+% results.r_exact_norm = restrue;
+% 
+% % Compute errors
+% [err] = comp_error(A,options.truesol,Xk);
+% err = err./sqrt(options.truesol'*A*options.truesol);
+% results.error_A_norm = err;
+% 
+% 

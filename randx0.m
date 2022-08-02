@@ -47,7 +47,7 @@ for k = 1:100
     semilogy([0:length(Anorm2)-1],Anorm2,'b:'), 
 end
 
-axis([0 n 1e-12 10])
+axis([0 n 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)
 print -depsc randx0.eps

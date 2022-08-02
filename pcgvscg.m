@@ -45,5 +45,6 @@ semilogy(0:numel(resultsnp.error_A_norm)-1,resultsnp.error_A_norm,'b--','LineWid
 hold on;
 semilogy(0:numel(results1.error_A_norm)-1,results1.error_A_norm,'r--','LineWidth',2);
 
-axis([0,40,1e-18,10])
-set(gca,'FontSize',15)
+axis([0,30,1e-8,10])
+set(gca,'FontSize',16)
+print -depsc pcgvscg.eps

@@ -109,3 +109,66 @@ end
 
 
 
+
+
+
+% % Run the CG method to solve Ax=b in "exact" arithmetic
+% % Note: Requires Advanpix library
+% 
+% %Input:
+% %A: square, sparse matrix with dimension n
+% %b: right hand side of system to solve, Ax=b; vector of dimension n
+% %P: preconditioner to be applied (left preconditioning)
+% %tol: convergence criteria for computed residual 2-norm
+% %options: should be a struct that contains two values:
+% %   options.xlim: x axis limit for plotting
+% %   options.truesol: true solution (used for computing the error)
+% 
+% %Output:
+% %results struct stores:
+% %r_exact_norm: 2-norm of true residual computed in each iteration
+% %(results.r_exact_norm)
+% %r_comp_norm: 2-norm of computed residual computed in each iteration
+% %(results.r_comp_norm)
+% %error_A_norm: A-norm of the error
+% %(results.error_A_norm)
+% %x: approximate solution computed in each iteration
+% %(results.x)
+% %r: residual computed in each iteration
+% %(results.r)
+% %ritzvals: ritz values of the Jacobi matrix T
+% %(results.ritzvals)
+% 
+% function results = pcge(A, b, P, tol, options)
+% 
+% 
+% % Size of matrix
+% N = size(A,1);
+% x0 = zeros(N,1);
+% 
+% % Apply preconditioner
+% A = P\A;
+% b = P\b;
+% 
+% 
+% % Run Lanczos with double reorthogonalization
+% [V,T,bet] = tridiag_lan_double(A,b-A*x0,options.xlim,2);
+% results.ritzvals = eig(full(T));
+% 
+% % Compute solutions and residuals
+% [Xk,Rk,rescomp] = comp_solutions_lanczos(T,V,bet);
+% results.r = Rk;
+% results.x = Xk(:,end);
+% results.r_comp_norm = rescomp;
+% 
+% % Compute true residuals
+% [Rkt,restrue] = comp_trueres(A,b,Xk);
+% results.r_exact_norm = restrue;
+% 
+% % Compute errors
+% [err] = comp_error(A,options.truesol,Xk);
+% err = err./sqrt(options.truesol'*A*options.truesol);
+% results.error_A_norm = err;
+% 
+
+

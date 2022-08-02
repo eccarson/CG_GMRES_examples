@@ -2,7 +2,7 @@
 % "Worst-case CG"
 
 % Set 100 digits to simulate "exact" arithmetic
-mp.Digits(100);
+mp.Digits(200);
 
 % Generate diagonal matrix and right-hand side
 n = 48;
@@ -123,7 +123,7 @@ n = 48;
 l1 = 1;
 ln = 5;
 A = mp(strakosmatrix(n, l1, ln, 1),100);
-b = [1;1;zeros(n-2,1)];
+b = [1;1e-12.*ones(n-2,1);1];
 b = b./norm(b);
 
 % Compute kappa-based upper bound on convergence rate and minmax bound
@@ -138,11 +138,12 @@ for k = 1:n-1
 end
 % Compute true solution and set options for cg run
 options.truesol = double(mp(A)\mp(b));
-tol = 1e-16; options.xlim = 2;
+tol = 1e-16; options.xlim = 10;
 
 % Run exact CG on this problem
 results = pcge(A, b, eye(n), tol, options);
 Anorm = results.error_A_norm;
+
 
 %Plot A-norm of the error
 f4 = figure;
