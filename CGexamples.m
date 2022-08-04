@@ -9,6 +9,7 @@ spectraldensityexact
 
 % "Mathematical behavior of CG for problems with clustered eigenvalues"
 clusterexp(0.6)
+spectraldensityclustexact
 
 % "Worst-case CG"
 worst

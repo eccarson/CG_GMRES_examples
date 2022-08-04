@@ -44,6 +44,8 @@ optionslam1.xlim=80;
 optionslam2.xlim=80;
 optionslam3.xlim=60;
 
+mp.Digits(100);
+
 % Run exact CG for the 3 systems
 optionslam1.truesol = double(mp(lam1c)\mp(b));
 resultslam1 = pcge(lam1c, b, eye(size(lam1c,1)), tol, optionslam1);
@@ -78,7 +80,7 @@ hold on;
 semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r--','LineWidth',2);
 semilogy(0:numel(resultslam3.error_A_norm)-1,resultslam3.error_A_norm,'g--','LineWidth',2);
 
-axis([0,20,1e-8,10])
+axis([0,20,4e-11,10])
 legend('acc. to the right','acc. to the left',  'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc exactcgclust.eps

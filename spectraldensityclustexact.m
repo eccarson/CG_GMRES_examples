@@ -79,7 +79,7 @@ resultslam1d15 = pcge(double(lam1c), double(b), eye(size(lam1c,1)), tol, options
 figure(1)
 subplot(3,1,2)
 
-keyboard
+
 stairs(diag(lam1c),0:(1/(n*nclust-1)):1,  'r-', 'LineWidth',1);
 hold on;
 stairs(resultslam1d5.ritzvals, 0:(1/4):1, "--", 'LineWidth',1, 'Color', [.8, .8, .8]);
@@ -90,6 +90,8 @@ title('acc. to the left','Interpreter','latex');
 axis([0, 1000, 0, 1])
 set(gca, 'fontsize', 14);
 
+
+
 subplot(3,1,1)
 stairs( diag(lam2c),0:(1/(n*nclust-1)):1, 'b-', 'LineWidth',1);
 hold on;
@@ -99,6 +101,8 @@ legend('eigenvalues', 'Ritz values k = 5','Ritz values k = 10','Location','North
 title('acc. to the right','Interpreter','latex');
 axis([0, 1000, 0, 1])
 set(gca, 'fontsize', 14);
+
+
 
 subplot(3,1,3)
 stairs(diag(lam3c),0:(1/(n*nclust-1)):1,  'g-', 'LineWidth',1);

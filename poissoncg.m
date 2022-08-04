@@ -21,7 +21,7 @@ xt = options.truesol;
 
 % Compute loss of orthogonality in Krylov basis
 for i = 1:size(Ve,2)
-    looe(i) = norm(eye(i) - Ve(:,1:i)'*Ve(:,1:i));
+    looe(i) = norm(eye(i) - Ve(:,1:i)'*Ve(:,1:i), 'fro');
 end
 
 % Recover CG solutions, residuals, and errors from Lanczos quantities
@@ -35,7 +35,7 @@ Xext = Xext./Xext(1);
 
 % Compute loss of orthogonality in Krylov basis
 for i = 1:size(Vd,2)
-    lood(i) = norm(eye(i) - Vd(:,1:i)'*Vd(:,1:i));
+    lood(i) = norm(eye(i) - Vd(:,1:i)'*Vd(:,1:i), 'fro');
 end
 
 % Recover CG solutions, residuals, and errors from Lanczos quantities
