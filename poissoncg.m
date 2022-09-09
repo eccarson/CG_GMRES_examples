@@ -47,11 +47,11 @@ Xdt = Xdt./Xdt(1);
 % Plot loss of orthogonality and A-norms of the errors for both
 % reorthogonalized case and case with no reorthogonalization
 figure()
-semilogy(1:numel(looe), looe, ':k','LineWidth',2);
+semilogy(1:numel(looe), looe, ':r','LineWidth',2);
 hold on
-semilogy(1:numel(Xext), Xext, '-.k','LineWidth',2);
-semilogy(1:numel(lood), lood, '--k','LineWidth',2);
-semilogy(1:numel(Xdt), Xdt, '-k','LineWidth',2);
+semilogy(1:numel(Xext), Xext, '-.b','LineWidth',2);
+semilogy(1:numel(lood), lood, '--r','LineWidth',2);
+semilogy(1:numel(Xdt), Xdt, '-b','LineWidth',2);
 axis([0,120,1e-16,1])
 set(gca,'FontSize',16)
 print -depsc poissonCG.eps

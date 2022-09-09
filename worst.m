@@ -32,9 +32,9 @@ Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
 f1 = figure;
-figure(f1), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f1), semilogy([0:length(Anorm)-1],Anorm,'b-', 'LineWidth',2), hold on
 figure(f1), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
-figure(f1), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+figure(f1), semilogy([0:length(kappa_bd)-1],kappa_bd,'k--', 'LineWidth',2)
 
 axis([0 40 1e-8 10])
 ax = gca;
@@ -70,9 +70,9 @@ Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
 f2 = figure;
-figure(f2), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f2), semilogy([0:length(Anorm)-1],Anorm,'b-', 'LineWidth',2), hold on
 figure(f2), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
-figure(f2), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+figure(f2), semilogy([0:length(kappa_bd)-1],kappa_bd,'k--', 'LineWidth',2)
 axis([0 40 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)
@@ -108,9 +108,9 @@ Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
 f3 = figure;
-figure(f3), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f3), semilogy([0:length(Anorm)-1],Anorm,'b-', 'LineWidth',2), hold on
 figure(f3), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
-figure(f3), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+figure(f3), semilogy([0:length(kappa_bd)-1],kappa_bd,'k--', 'LineWidth',2)
 
 axis([0 40 1e-8 10])
 ax = gca;
@@ -147,9 +147,9 @@ Anorm = results.error_A_norm;
 
 %Plot A-norm of the error
 f4 = figure;
-figure(f4), semilogy([0:length(Anorm)-1],Anorm,'r--', 'LineWidth',2), hold on
+figure(f4), semilogy([0:length(Anorm)-1],Anorm,'b-', 'LineWidth',2), hold on
 figure(f4), semilogy([0:length(out)-1],out,'k:','LineWidth',2)
-figure(f4), semilogy([0:length(kappa_bd)-1],kappa_bd,'k-', 'LineWidth',2)
+figure(f4), semilogy([0:length(kappa_bd)-1],kappa_bd,'k--', 'LineWidth',2)
 axis([0 40 1e-8 10])
 ax = gca;
 set(ax,'FontSize',16)

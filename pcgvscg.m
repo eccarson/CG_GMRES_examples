@@ -41,9 +41,9 @@ results1.error_A_norm = results1.error_A_norm(1:i);
 
 % Plot error norms for both systems
 figure()
-semilogy(0:numel(resultsnp.error_A_norm)-1,resultsnp.error_A_norm,'b--','LineWidth',2);
+semilogy(0:numel(resultsnp.error_A_norm)-1,resultsnp.error_A_norm,'b-','LineWidth',2);
 hold on;
-semilogy(0:numel(results1.error_A_norm)-1,results1.error_A_norm,'r--','LineWidth',2);
+semilogy(0:numel(results1.error_A_norm)-1,results1.error_A_norm,'r-','LineWidth',2);
 
 axis([0,30,1e-8,10])
 set(gca,'FontSize',16)

@@ -75,13 +75,13 @@ end
 
 % Plot convergence for exact CG
 figure()
-semilogy(0:numel(resultslam2.error_A_norm)-1,resultslam2.error_A_norm,'b--','LineWidth',2);
+semilogy(0:numel(resultslam2.error_A_norm)-1,resultslam2.error_A_norm,'b-','LineWidth',2);
 hold on;
-semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r--','LineWidth',2);
-semilogy(0:numel(resultslam3.error_A_norm)-1,resultslam3.error_A_norm,'g--','LineWidth',2);
+semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r-','LineWidth',2);
+semilogy(0:numel(resultslam3.error_A_norm)-1,resultslam3.error_A_norm,'g-','LineWidth',2);
 
 axis([0,20,4e-11,10])
-legend('acc. to the right','acc. to the left',  'equally spaced','Interpreter','latex');
+%legend('acc. to the right','acc. to the left',  'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc exactcgclust.eps
 

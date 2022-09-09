@@ -42,11 +42,11 @@ results = pcge(A, b, speye(n), 1e-17, options);
 
 % Plot convergence of residual and error
 figure()
-semilogy(0:numel(results.r_exact_norm)-1, results.r_exact_norm, 'k-', 'LineWidth',1);
+semilogy(0:numel(results.r_exact_norm)-1, results.r_exact_norm, 'b-', 'LineWidth',1);
 hold on;
-semilogy(0:numel(results.error_A_norm)-1, results.error_A_norm, 'k--', 'LineWidth',1);
+semilogy(0:numel(results.error_A_norm)-1, results.error_A_norm, 'r--', 'LineWidth',1);
 axis([0,19,1e-8,1e1])
-legend('residual, $\Vert b-Ax_k\Vert_2$', 'error, $\Vert x-x_k\Vert_A$', 'Location','Southwest','Interpreter','latex');
+% legend('residual, $\Vert b-Ax_k\Vert_2$', 'error, $\Vert x-x_k\Vert_A$', 'Location','Southwest','Interpreter','latex');
 set(gca, 'fontsize', 16);
 print -depsc resvserror1.eps
 
@@ -87,10 +87,10 @@ results = pcge(A, b, speye(n), 1e-17, options);
 
 % Plot convergence of residual and error
 figure()
-semilogy(0:numel(results.r_exact_norm)-1, results.r_exact_norm, 'k-', 'LineWidth',1);
+semilogy(0:numel(results.r_exact_norm)-1, results.r_exact_norm, 'b-', 'LineWidth',1);
 hold on;
-semilogy(0:numel(results.error_A_norm)-1, results.error_A_norm, 'k--', 'LineWidth',1);
+semilogy(0:numel(results.error_A_norm)-1, results.error_A_norm, 'r--', 'LineWidth',1);
 axis([0,19,1e-8,1e1])
-legend('residual, $\Vert b-Ax_k\Vert_2$', 'error, $\Vert x-x_k\Vert_A$', 'Location','Southwest','Interpreter','latex');
+% legend('residual, $\Vert b-Ax_k\Vert_2$', 'error, $\Vert x-x_k\Vert_A$', 'Location','Southwest','Interpreter','latex');
 set(gca, 'fontsize', 16);
 print -depsc resvserror2.eps
