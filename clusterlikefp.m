@@ -76,7 +76,7 @@ hold on;
 semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r-','LineWidth',2);
 semilogy(0:numel(resultslam3.error_A_norm)-1,resultslam3.error_A_norm,'g-','LineWidth',2);
 
-axis([0,60,1e-8,10])
+axis([0,50,1e-8,10])
 %legend('acc. to the right', 'acc. to the left', 'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc exactcgclustlikefp.eps

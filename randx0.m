@@ -32,20 +32,44 @@ for k = 1:100
     options.truesol = (mp(A)\mp(b));
     
     % Run exact CG
-    results = pcge_x0(A, b, eye(n), x0, tol, options);
+    results = pcgd_x0(A, b, eye(n), x0, tol, options);
     Anorm1 = results.error_A_norm;
     
     % Compute true solution for second system
     options2.truesol = (mp(A2)\mp(b));
     
     % Run exact CG
-    results2 = pcge_x0(A2, b, eye(n), x0, tol, options2);
+    results2 = pcgd_x0(A2, b, eye(n), x0, tol, options2);
     Anorm2 = results2.error_A_norm;
     
     % Plot error trajectories
     semilogy([0:length(Anorm1)-1],Anorm1,'r:'), hold on
     semilogy([0:length(Anorm2)-1],Anorm2,'b:'), 
 end
+
+%particular rhs
+    % Generate random RHS
+    b = logspace(0,-3,n)';
+    b = b./norm(b);
+    
+    % Compute true solution for first system
+    options.truesol = (mp(A)\mp(b));
+    
+    % Run exact CG
+    results = pcgd_x0(A, b, eye(n), x0, tol, options);
+    Anorm1 = results.error_A_norm;
+    
+    % Compute true solution for second system
+    options2.truesol = (mp(A2)\mp(b));
+    
+    % Run exact CG
+    results2 = pcgd_x0(A2, b, eye(n), x0, tol, options2);
+    Anorm2 = results2.error_A_norm;
+    
+    % Plot error trajectories
+    semilogy([0:length(Anorm1)-1],Anorm1,'k-.','LineWidth', 2), hold on
+    semilogy([0:length(Anorm2)-1],Anorm2,'k--','LineWidth', 2)
+
 
 axis([0 n 1e-8 10])
 ax = gca;

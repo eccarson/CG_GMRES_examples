@@ -84,8 +84,8 @@ subplot(3,1,2)
 
 stairs(diag(lam1c),(1/(n*nclust)):(1/(n*nclust)):1,  'r-', 'LineWidth',1);
 hold on;
-stairs(resultslam1d5.ritzvals, (1/5):(1/5):1, "--", 'LineWidth',1, 'Color', [.8, .8, .8]);
-stairs(resultslam1d10.ritzvals,(1/10):(1/10):1,  "--", 'LineWidth',1,'Color', [.4, .4, .4]);
+stairs(resultslam1d5.ritzvals, (1/5):(1/5):1, ":", 'LineWidth',1, 'Color', [0,0,0]);
+stairs(resultslam1d10.ritzvals,(1/10):(1/10):1,  "-.", 'LineWidth',1,'Color', [0,0,0]);
 stairs(resultslam1d15.ritzvals,(1/15):(1/15):1,  "--", 'LineWidth',1, 'Color', [0,0,0]);
 legend('eigenvalues', 'Ritz values k = 5', 'Ritz values k = 10', 'Ritz values k = 15','Location','Southeast','Interpreter','latex');
 title('acc. to the left','Interpreter','latex');
@@ -97,8 +97,8 @@ set(gca, 'fontsize', 14);
 subplot(3,1,1)
 stairs( diag(lam2c),(1/(n*nclust)):(1/(n*nclust)):1, 'b-', 'LineWidth',1);
 hold on;
-stairs(resultslam2d5.ritzvals, (1/5):(1/5):1, "--", 'LineWidth',1, 'Color', [.8, .8, .8]);
-stairs(resultslam2d10.ritzvals,(1/10):(1/10):1,  "--", 'LineWidth',1, 'Color', [.4, .4, .4]);
+stairs(resultslam2d5.ritzvals, (1/5):(1/5):1, ":", 'LineWidth',1, 'Color', [0,0,0]);
+stairs(resultslam2d10.ritzvals,(1/10):(1/10):1,  "-.", 'LineWidth',1, 'Color', [0,0,0]);
 legend('eigenvalues', 'Ritz values k = 5','Ritz values k = 10','Location','Northwest','Interpreter','latex');
 title('acc. to the right','Interpreter','latex');
 axis([0, 1000, 0, 1])
@@ -109,8 +109,8 @@ set(gca, 'fontsize', 14);
 subplot(3,1,3)
 stairs(diag(lam3c),(1/(n*nclust)):(1/(n*nclust)):1,  'g-', 'LineWidth',1);
 hold on;
-stairs(resultslam3d5.ritzvals,(1/5):(1/5):1,  "--", 'LineWidth',1, 'Color', [.8, .8, .8]);
-stairs(resultslam3d10.ritzvals,(1/10):(1/10):1,  "--", 'LineWidth',1, 'Color', [.4, .4, .4]);
+stairs(resultslam3d5.ritzvals,(1/5):(1/5):1,  ":", 'LineWidth',1, 'Color', [0,0,0]);
+stairs(resultslam3d10.ritzvals,(1/10):(1/10):1,  "-.", 'LineWidth',1, 'Color', [0,0,0]);
 legend('eigenvalues', 'Ritz values k = 5','Ritz values k = 10','Ritz values k = 30', 'Location','Northwest','Interpreter','latex');
 title('equally spaced','Interpreter','latex');
 axis([0, 1000, 0, 1])

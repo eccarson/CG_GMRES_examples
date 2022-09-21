@@ -16,10 +16,10 @@ lam3 = diag(strakosmatrix(n, l1, ln, 1));
 
 % Plot eigenvalue distributions
 figure()
-plot(real(lam1),imag(lam1)-0.0,'r.','MarkerSize',10), hold on
-plot(real(lam2),imag(lam2)+0.5,'b.','MarkerSize',10), hold on
-plot(real(lam3),imag(lam3)-0.5,'g.','MarkerSize',10), hold on
-axis([0,1e3,-1,1])
+plot(real(lam1),imag(lam1)-0.0,'r.','MarkerSize',16), hold on
+plot(real(lam2),imag(lam2)+0.5,'b.','MarkerSize',16), hold on
+plot(real(lam3),imag(lam3)-0.5,'g.','MarkerSize',16), hold on
+axis([-100,1100,-1,1])
 %yticks([-.5,0,.5])
 %yticklabels({'\Lambda(A_3)','\Lambda(A_2)','\Lambda(A_1)'})
 set(gca,'YTickLabel',[]);
@@ -92,7 +92,7 @@ hold on;
 semilogy(0:numel(resultslam1.error_A_norm)-1,resultslam1.error_A_norm,'r-','LineWidth',2);
 semilogy(0:numel(resultslam3.error_A_norm)-1,resultslam3.error_A_norm,'g-','LineWidth',2);
 
-axis([0,60,1e-8,10])
+axis([0,50,1e-8,10])
 %legend( 'acc. to the right', 'acc. to the left', 'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc exactcgdist.eps
@@ -104,7 +104,7 @@ hold on;
 semilogy(0:numel(resultslam1d.error_A_norm)-1,resultslam1d.error_A_norm,'r-','LineWidth',2);
 semilogy(0:numel(resultslam3d.error_A_norm)-1,resultslam3d.error_A_norm,'g-','LineWidth',2);
 
-axis([0,60,1e-8,10])
+axis([0,50,1e-8,10])
 %legend('acc. to the right', 'acc. to the left', 'equally spaced','Interpreter','latex');
 set(gca,'FontSize',16)
 print -depsc dpcgdist.eps
