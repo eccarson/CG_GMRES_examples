@@ -32,3 +32,6 @@ resvserror
 
 % "CG with "average" initial residuals"
 randx0
+
+% "the trajectory of finite precision CG computations"
+cgtraj
